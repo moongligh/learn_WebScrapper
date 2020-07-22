@@ -1,6 +1,12 @@
-from indeed import extract_indeed_pages, extract_indeed_jobs
+from indeed import get_jobs as get_indeed_jobs
+from so import get_jobs as get_so_jobs
+from save import save_to_csv
 
-last_indeed_pages = extract_indeed_pages() # 최종 페이지 추출
-indeed_jobs = extract_indeed_jobs(last_indeed_pages)  # 최종 페이지를 이용한 request문 작성
+indeed_jobs = get_indeed_jobs()
+so_jobs = get_so_jobs()
 
-print(indeed_jobs) # indeed에 올라온 구직내용 출력
+jobs = so_jobs + indeed_jobs # 두 사이트의 구직정보를 병합
+save_to_csv(jobs) # 병합한 데이터를 csv파일로 저장하기
+
+# print(indeed_jobs) # indeed에 올라온 구직내용 출력
+# print(so_jobs) # StackOver Flow에 올라온 구직내용 출력
