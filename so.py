@@ -13,11 +13,14 @@ def get_last_page():    # 페이지 추출 함수
 
 def extract_job(html):  # 채용정보를 추출하여 doc 형태로 리턴
     title = html.find('a', {'class': 's-link'})['title']
-    # company, location = html.find('h3').find_all('span', recursive=False) # unpack value를 이용하기 위해 첫단계 'span'만 수집
-    # print(company.get_text(strip=True), location.get_text(strip=True))
-    company_location = html.find('h3').get_text(strip=True) # h3태그 안의 모든 text를 가져온다.
-    company = company_location.split('•')[0]    # 가져온 text의 값 중 • 을 기준으로 앞은 회사 뒤는 지역을 할당한다.
-    location = company_location.split('•')[1]
+    company, location = html.find('h3').find_all('span', recursive=False) # unpack value를 이용하기 위해 첫단계 'span'만 수집
+    company.get_text(strip=True)
+    location.get_text(strip=True).strip('-').strip(' \r').strip('\n')
+
+    # company_location = html.find('h3').get_text(strip=True) # h3태그 안의 모든 text를 가져온다.
+    # company = company_location.split('•')[0]    # 가져온 text의 값 중 • 을 기준으로 앞은 회사 뒤는 지역을 할당한다.
+    # location = company_location.split('•')[1]
+
     job_id = html['data-jobid']
 
     return {'tite': title,
