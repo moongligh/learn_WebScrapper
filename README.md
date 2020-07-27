@@ -4,8 +4,8 @@
 
 공부자료: https://nomadcoders.co/python-for-beginners/lobby
 
-개발환경: VScode
-사용언어: Python 3
-packges: beautifulsoup4, requests
+개발환경: VScode  
+사용언어: Python 3  
+packges: beautifulsoup4, requests  
 
 main.py를 실행하면 구동됩니다.
